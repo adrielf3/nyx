@@ -10,10 +10,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@google/genai": "2.28.0",
+    "@react-native/new-app-screen": "0.87.1",
     "react": "19.2.3",
     "react-native": "0.87.1",
-    "@react-native/new-app-screen": "0.87.1",
-    "react-native-safe-area-context": "^5.5.2"
+    "react-native-safe-area-context": "^5.5.2",
+    "web-streams-polyfill": "3.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

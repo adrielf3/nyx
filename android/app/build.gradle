@@ -59,6 +59,11 @@ react {
  */
 def enableProguardInReleaseBuilds = false
 
+def geminiApiKey = System.getenv("GEMINI_API_KEY") ?: ""
+def escapedGeminiApiKey = geminiApiKey
+    .replace("\\", "\\\\")
+    .replace('"', '\\"')
+
 /**
  * The preferred build flavor of JavaScriptCore (JSC)
  *
@@ -84,6 +89,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        buildConfigField "String", "GEMINI_API_KEY", "\"${escapedGeminiApiKey}\""
     }
     signingConfigs {
         debug {

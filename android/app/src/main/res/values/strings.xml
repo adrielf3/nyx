@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Nyx</string>
+    <string name="nyx_overlay_description">Nyx, toque para abrir ou arraste para mover</string>
 </resources>

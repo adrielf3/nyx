@@ -1,6 +1,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <queries>
+      <package android:name="com.google.android.youtube" />
+      <package android:name="com.android.chrome" />
+      <package android:name="com.google.android.apps.maps" />
+      <package android:name="com.google.android.gm" />
+      <package android:name="com.google.android.apps.youtube.music" />
+      <intent>
+        <action android:name="android.speech.action.RECOGNIZE_SPEECH" />
+      </intent>
+      <intent>
+        <action android:name="android.speech.RecognitionService" />
+      </intent>
+      <intent>
+        <action android:name="android.intent.action.TTS_SERVICE" />
+      </intent>
+    </queries>
 
     <application
       android:name=".MainApplication"
@@ -23,5 +42,24 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+      <activity
+        android:name=".VoiceRecognitionActivity"
+        android:excludeFromRecents="true"
+        android:exported="false"
+        android:launchMode="singleTask"
+        android:taskAffinity="com.nyx.voice"
+        android:theme="@style/NyxVoiceActivityTheme" />
+      <service
+        android:name=".NyxOverlayService"
+        android:exported="false" />
+      <service
+        android:name=".NyxNotificationListenerService"
+        android:exported="true"
+        android:label="Nyx — controle do YouTube Music"
+        android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+        <intent-filter>
+          <action android:name="android.service.notification.NotificationListenerService" />
+        </intent-filter>
+      </service>
     </application>
 </manifest>
